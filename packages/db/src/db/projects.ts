@@ -1,8 +1,9 @@
 import { relations, sql } from "drizzle-orm";
-import { createTable } from "./_table";
 import { timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { usersTable } from "./users"
+
+import { createTable } from "./_table";
 import { tasksTable } from "./tasks";
+import { usersTable } from "./users";
 import { projectToWeekly } from "./weeklys";
 
 export const projectColorEnum = [
@@ -24,13 +25,13 @@ export const projectColorEnum = [
   "pink",
   "rose",
   "gray",
-] as const; 
+] as const;
 
 export const projectsTable = createTable("projects_table", {
   id: uuid("id").defaultRandom().primaryKey(),
   name: varchar("project_name").unique(),
-  color: varchar("project_color", { enum: projectColorEnum } ).unique(),
-  
+  color: varchar("project_color", { enum: projectColorEnum }).unique(),
+
   userId: uuid("user_id").notNull(),
   createdAt: timestamp("create_at").defaultNow(),
   updatedAt: timestamp("updated_at").$onUpdate(() => new Date()),
@@ -43,5 +44,5 @@ export const projectsRelations = relations(projectsTable, ({ one, many }) => ({
     references: [usersTable.id],
   }),
   tasks: many(tasksTable),
-  projectToWeekly: many(projectToWeekly)
+  projectToWeekly: many(projectToWeekly),
 }));

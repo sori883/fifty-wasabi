@@ -2,7 +2,7 @@
   "name": "fifty-wasabi",
   "private": true,
   "engines": {
-    "node": ">=^20.18.3",
+    "node": ">=20.18.3",
     "pnpm": "^10.10.0"
   },
   "packageManager": "pnpm@10.10.0",

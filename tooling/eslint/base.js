@@ -12,7 +12,7 @@ export default tseslint.config(
   includeIgnoreFile(path.join(import.meta.dirname, "../../.gitignore")),
   { ignores: ["**/*.config.*", "**/.textlintrc.json", "**/*.d.ts"] },
   {
-    files: ["**/*.js", "**/*.ts", "**/*.tsx"],
+    files: ["**/*.js", "**/*.ts", "**/*.tsx", "**/**/*.ts", "**/**/*.tsx"],
     plugins: {
       import: importPlugin,
       turbo: turboPlugin,

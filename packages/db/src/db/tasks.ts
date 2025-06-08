@@ -1,8 +1,9 @@
 import { relations, sql } from "drizzle-orm";
-import { createTable } from "./_table";
 import { timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { usersTable } from "./users"
+
+import { createTable } from "./_table";
 import { projectsTable } from "./projects";
+import { usersTable } from "./users";
 
 export const taskColorEnum = [
   "red",
@@ -25,12 +26,12 @@ export const taskColorEnum = [
   "gray",
 ] as const;
 
-export const taskStatusEnum = ["stop", "doing", "done"] as const; 
+export const taskStatusEnum = ["stop", "doing", "done"] as const;
 
 export const tasksTable = createTable("tasks_table", {
   id: uuid("id").defaultRandom().primaryKey(),
-  name: varchar("task_name", { enum: taskColorEnum } ).default("gray"),
-  status: varchar("task_status", { enum: taskStatusEnum }).default(sql`NULL`),  
+  name: varchar("task_name", { enum: taskColorEnum }).default("gray"),
+  status: varchar("task_status", { enum: taskStatusEnum }).default(sql`NULL`),
 
   userId: uuid("user_id").notNull(),
   projectId: uuid("project_id").notNull(),
@@ -47,5 +48,5 @@ export const tasksRelations = relations(tasksTable, ({ one }) => ({
   project: one(projectsTable, {
     fields: [tasksTable.projectId],
     references: [projectsTable.id],
-  })
+  }),
 }));

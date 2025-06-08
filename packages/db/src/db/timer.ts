@@ -1,8 +1,9 @@
-import { eq, relations, sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
+import { integer, timestamp, uuid } from "drizzle-orm/pg-core";
+
 import { createTable } from "./_table";
-import { boolean, integer, timestamp, uniqueIndex, uuid } from "drizzle-orm/pg-core";
-import { usersTable } from "./users";
 import { tasksTable } from "./tasks";
+import { usersTable } from "./users";
 
 export const timersTable = createTable("timers_table", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -15,12 +16,12 @@ export const timersTable = createTable("timers_table", {
   deletedAt: timestamp("deleted_at").default(sql`NULL`),
 });
 
-export const timerRelations = relations(timersTable, ({ one, many }) => ({
+export const timerRelations = relations(timersTable, ({ one }) => ({
   user: one(usersTable, {
     fields: [timersTable.userId],
     references: [usersTable.id],
   }),
-  task: one(tasksTable, { 
+  task: one(tasksTable, {
     fields: [timersTable.taskId],
     references: [tasksTable.id],
   }),

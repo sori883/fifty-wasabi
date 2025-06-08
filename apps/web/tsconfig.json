@@ -11,15 +11,8 @@
     "**/.client/**/*.tsx"
   ],
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
-    "types": [
-      "vite/client",
-      "@cloudflare/workers-types/2023-07-01"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["vite/client", "@cloudflare/workers-types/2023-07-01"],
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
@@ -33,9 +26,7 @@
     "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types"],
     "paths": {
-      "~/*": [
-        "./app/*"
-      ]
+      "~/*": ["./app/*"]
     },
     // Remix takes care of building everything in `remix build`.
     "noEmit": true

@@ -1,6 +1,7 @@
 import { relations, sql } from "drizzle-orm";
-import { createTable } from "./_table";
 import { timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+
+import { createTable } from "./_table";
 import { projectsTable } from "./projects";
 import { tasksTable } from "./tasks";
 import { timersTable } from "./timer";
@@ -18,7 +19,7 @@ export const usersTable = createTable("users_table", {
 });
 
 export const usersRelations = relations(usersTable, ({ many }) => ({
-	projects: many(projectsTable),
+  projects: many(projectsTable),
   tasks: many(tasksTable),
   timers: many(timersTable),
 }));

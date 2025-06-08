@@ -1,8 +1,9 @@
 import { relations, sql } from "drizzle-orm";
-import { createTable } from "./_table";
 import { integer, primaryKey, timestamp, uuid } from "drizzle-orm/pg-core";
-import { usersTable } from "./users";
+
+import { createTable } from "./_table";
 import { projectsTable } from "./projects";
+import { usersTable } from "./users";
 
 export const weeklysTable = createTable("weeklys_table", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -15,7 +16,9 @@ export const weeklysTable = createTable("weeklys_table", {
 });
 
 // Weeklysとrojectsの中間テーブル
-export const projectToWeekly = createTable("projects_to_weeklys", {
+export const projectToWeekly = createTable(
+  "projects_to_weeklys",
+  {
     projectId: uuid("project_id").notNull(),
     weeklyId: uuid("weekly_id").notNull(),
     ScheduledTime: integer("scheduled_time").default(0).notNull(),
@@ -23,9 +26,7 @@ export const projectToWeekly = createTable("projects_to_weeklys", {
     updatedAt: timestamp("updated_at").$onUpdate(() => new Date()),
     deletedAt: timestamp("deleted_at").default(sql`NULL`),
   },
-  (table) => [
-    primaryKey({ columns: [table.projectId, table.weeklyId] }),
-  ],
+  (table) => [primaryKey({ columns: [table.projectId, table.weeklyId] })],
 );
 
 export const weeklysRelations = relations(weeklysTable, ({ one, many }) => ({
@@ -33,16 +34,19 @@ export const weeklysRelations = relations(weeklysTable, ({ one, many }) => ({
     fields: [weeklysTable.userId],
     references: [usersTable.id],
   }),
-  projectToWeekly: many(projectToWeekly)
+  projectToWeekly: many(projectToWeekly),
 }));
 
-export const projectToWeeklyRelations = relations(projectToWeekly, ({ one }) => ({
-  project: one(projectsTable, {
-    fields: [projectToWeekly.projectId],
-    references: [projectsTable.id],
+export const projectToWeeklyRelations = relations(
+  projectToWeekly,
+  ({ one }) => ({
+    project: one(projectsTable, {
+      fields: [projectToWeekly.projectId],
+      references: [projectsTable.id],
+    }),
+    weekly: one(weeklysTable, {
+      fields: [projectToWeekly.weeklyId],
+      references: [weeklysTable.id],
+    }),
   }),
-  weekly: one(weeklysTable, {
-    fields: [projectToWeekly.weeklyId],
-    references: [weeklysTable.id],
-  }),
-}));
+);

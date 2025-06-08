@@ -74,16 +74,12 @@
         "study_aws_users_table_username_unique": {
           "name": "study_aws_users_table_username_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         },
         "study_aws_users_table_email_unique": {
           "name": "study_aws_users_table_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -147,16 +143,12 @@
         "study_aws_projects_table_project_name_unique": {
           "name": "study_aws_projects_table_project_name_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "project_name"
-          ]
+          "columns": ["project_name"]
         },
         "study_aws_projects_table_project_color_unique": {
           "name": "study_aws_projects_table_project_color_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "project_color"
-          ]
+          "columns": ["project_color"]
         }
       },
       "policies": {},
@@ -287,9 +279,7 @@
         "study_aws_timers_table_task_id_unique": {
           "name": "study_aws_timers_table_task_id_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "task_id"
-          ]
+          "columns": ["task_id"]
         }
       },
       "policies": {},
