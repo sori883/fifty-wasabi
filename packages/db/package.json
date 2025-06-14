@@ -10,6 +10,8 @@
     "sb:start": "pnpx supabase start",
     "sb:stop": "pnpx supabase stop",
     "sb:push": "pnpx supabase migration up",
+    "sb:link": "pnpx supabase link --project-ref",
+    "sb:unlink": "pnpx supabase unlink",
     "generate": "pnpm with-env drizzle-kit generate",
     "migrate": "pnpm with-env drizzle-kit migrate",
     "studio": "pnpm with-env drizzle-kit studio",

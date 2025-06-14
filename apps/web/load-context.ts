@@ -1,13 +1,21 @@
 import type { Context } from "hono";
 import type { PlatformProxy } from "wrangler";
+import type { User } from "@supabase/supabase-js";
+import type { DbType } from "@acme/db";
 
-type Env = {
+export type Env = {
   Bindings: {
-    MY_VAR: string;
+    SUPABASE_URL: string;
+    SUPABASE_ANON_KEY: string;
+    AUTH_CALLBACK_URL: string;
+    AUTH_REDIRECT_URL: string;
+    AUTH_SIGNOUT_URL: string;
+    DATABASE_URL: string;
   };
   Variables: {
-    MY_VAR_IN_VARIABLES: string;
-  };
+    user: User;
+    db: DbType
+  }
 };
 
 type GetLoadContextArgs = {
@@ -29,7 +37,6 @@ type GetLoadContextArgs = {
 declare module "react-router" {
   interface AppLoadContext extends ReturnType<typeof getLoadContext> {
     // This will merge the result of `getLoadContext` into the `AppLoadContext`
-    extra: string;
     hono: {
       context: Context<Env>;
     };
@@ -37,8 +44,8 @@ declare module "react-router" {
 }
 
 export function getLoadContext({ context }: GetLoadContextArgs) {
+  console.log(context.cloudflare.env.DATABASE_URL);
   return {
-    ...context,
-    extra: "stuff",
+    ...context
   };
 }
