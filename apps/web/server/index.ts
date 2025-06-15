@@ -5,7 +5,10 @@ import { init, inited, unnecessaryLogin, allRoute } from "./middleware";
 const app = new Hono<Env>();
 
 app.use("*", allRoute, async(c, next) => {
-  
+  await next();
+});
+
+app.use("/api/*", async(c, next) => {
   await next();
 });
 

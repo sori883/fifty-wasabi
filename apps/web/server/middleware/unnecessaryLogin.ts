@@ -2,7 +2,6 @@ import type { MiddlewareHandler } from "hono";
 import { getUser } from "~/libs/supabase/auth.supabase.server";
 import type { Env } from "../../load-context";
 
-
 export const unnecessaryLogin: MiddlewareHandler<Env> = async (c, next) => {
   console.log("unnecessaryLogin middleware");
 

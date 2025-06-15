@@ -1,6 +1,6 @@
 import { redirect } from "react-router";
 import { createSupabaseServerClient } from "~/libs/supabase/supabase.server";
-import type { Route } from "../../+types/root";
+import type { Route } from "../../../+types/root";
 
 export async function loader({ request, context }: Route.LoaderArgs) {
   const requestUrl = new URL(request.url);

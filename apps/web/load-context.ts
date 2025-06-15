@@ -44,7 +44,6 @@ declare module "react-router" {
 }
 
 export function getLoadContext({ context }: GetLoadContextArgs) {
-  console.log(context.cloudflare.env.DATABASE_URL);
   return {
     ...context
   };

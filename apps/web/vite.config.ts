@@ -6,6 +6,7 @@ import serverAdapter from "hono-react-router-adapter/vite";
 import path from "path";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { getLoadContext } from './load-context'
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -13,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     reactRouter(),
     serverAdapter({
       adapter,
+      getLoadContext,
       entry: "server/index.ts",
     }),
     tailwindcss(),
