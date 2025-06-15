@@ -14,7 +14,7 @@ export async function action({ request, context }: Route.ActionArgs) {
       success: false,
       message: "error!",
       submission: submission.reply({
-        formErrors: ["ユーザー作成に失敗しました"]
+        formErrors: ["初期設定に失敗しました。"]
       })
     };
   }
