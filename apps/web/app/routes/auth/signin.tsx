@@ -1,11 +1,9 @@
-import { Form } from "react-router";
+import { SignInForm } from "~/components/form";
 
 export default function SignIn() {
   return (
     <div>
-      <Form method="post" action="/api/auth/signin">
-        <button type="submit">Sign In</button>
-      </Form>
+      <SignInForm />
     </div>
   );
 }

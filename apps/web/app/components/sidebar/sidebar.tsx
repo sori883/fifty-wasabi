@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "@acme/style-config/util";
 import { useSidebarContext } from "~/context";
+import { SignOutForm } from "~/components/form";
 
 // Responsive Sidebar Component
 import {
@@ -10,13 +11,13 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import {
-  Cog6ToothIcon,
   FolderIcon,
   HomeIcon,
   XMarkIcon,
   Bars3Icon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  ArrowLeftEndOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
 
@@ -146,11 +147,11 @@ export function Sidebar() {
                         href="#"
                         className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
                       >
-                        <Cog6ToothIcon
+                        <ArrowLeftEndOnRectangleIcon
                           aria-hidden="true"
                           className="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
                         />
-                        Settings
+                        <SignOutForm />
                       </a>
                     </li>
                   </ul>
@@ -298,11 +299,11 @@ export function Sidebar() {
                       collapsed && "justify-center"
                     )}
                   >
-                    <Cog6ToothIcon
+                    <ArrowLeftEndOnRectangleIcon
                       aria-hidden="true"
                       className="size-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
                     />
-                    {!collapsed && "Settings"}
+                    {!collapsed && <SignOutForm />}
                   </a>
                 </li>
               </ul>
