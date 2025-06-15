@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@acme/style-config/util";
 import { useSidebarContext } from "~/context";
-import { SignOutForm } from "~/components/form";
+import { SignOutForm } from "~/components/form/auth";
 
 // Responsive Sidebar Component
 import {

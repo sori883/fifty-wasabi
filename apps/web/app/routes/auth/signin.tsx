@@ -1,4 +1,4 @@
-import { SignInForm } from "~/components/form";
+import { SignInForm } from "~/components/form/auth";
 
 export default function SignIn() {
   return (
