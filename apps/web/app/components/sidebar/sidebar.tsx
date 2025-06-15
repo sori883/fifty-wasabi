@@ -23,7 +23,7 @@ import {
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false }
+  { name: "Projects", href: "/appli/project", icon: FolderIcon, current: false }
 ];
 
 const teams = [

@@ -4,7 +4,7 @@ export default function Index() {
   return (
     <AppliBase>
       <div>
-        dashbord
+        projects
       </div>
     </AppliBase>
   );

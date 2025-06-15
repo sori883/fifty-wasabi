@@ -8,6 +8,11 @@ export const updateInitUserSchema = z.object({
   email : z.string(),
 });
 
+export const updateInitUserFormSchema = z.object({
+  username: z.string({ required_error: "ユーザ名は必須です"}).min(1),
+  displayName: z.string({ required_error: "表示名は必須です"}).min(1),
+});
+
 export async function updateInitUser(db: DbType, data: z.infer<typeof updateInitUserSchema>) {
   try {
     const v = updateInitUserSchema.parse(data);

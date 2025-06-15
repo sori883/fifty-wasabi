@@ -7,11 +7,13 @@ export default [
   route("api/auth/signin", "routes/apiv1/auth/signIn.ts"),
   route("api/auth/signout", "routes/apiv1/auth/signOut.ts"),
   route("api/auth/callback", "routes/apiv1/auth/callback.ts"),
+  route("api/auth/init", "routes/apiv1/auth/init.ts"),
 
   route("auth/signin", "routes/auth/signin.tsx"),
 
   route("auth/init", "routes/auth/init.tsx"),
 
   route("appli/", "routes/appli/index.tsx"),
+  route("appli/project", "routes/appli/project.tsx"),
 
 ] satisfies RouteConfig;
